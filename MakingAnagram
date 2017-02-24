@@ -1,0 +1,49 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+public class MakingAnagram {
+    
+    public static int numberNeeded(String first, String second) {
+      char[] f = first.toCharArray();
+      char[] s = second.toCharArray();
+      
+        Arrays.sort(f);
+        Arrays.sort(s);
+        
+        int len = 0;
+        if (f.length > s.length) {
+            len = f.length;
+        } else {
+            len = s.length;
+        }
+        
+        int[] count = new int[1+(int)'z' - (int)'a'];
+        Arrays.fill(count,0);
+        
+        
+        for (int i = 0; i < len; i++) {
+            if (i < f.length) {
+                count[(int) (f[i]-'a')]++;
+            }
+            if (i < s.length) {
+                count[(int) (s[i]-'a')]--;
+            }
+        }
+        int c = 0;
+        for (int j = 0; j < count.length; j++) {
+            if (count[j] < 0) c += -count[j];
+            else c += count[j];
+        }
+        return c;
+        
+    }
+  
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String a = in.next();
+        String b = in.next();
+        System.out.println(numberNeeded(a, b));
+    }
+}
