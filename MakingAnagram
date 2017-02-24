@@ -4,6 +4,8 @@ import java.text.*;
 import java.math.*;
 import java.util.regex.*;
 public class MakingAnagram {
+
+//Given two strings, how many char to drop to make anagram of each other
     
     public static int numberNeeded(String first, String second) {
       char[] f = first.toCharArray();
